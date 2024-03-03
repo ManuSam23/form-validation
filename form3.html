@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Form Validation</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <!-- bootstrap cdn.com -->
+    <script src="form2.js"></script>
+</head>
+<body>
+    <form onsubmit=" return validate()" action="https://sheetdb.io/api/v1/sy3thbcn0rhna" method="post" id="sheetdb-form">
+        <label for="uname">UserName</label>
+        <label for="uname" style="color: red;">**</label>
+        <input type="text" id="uname" class="form-control", name="data[UserName]"><br>
+        <span id="msg" style="color: red;"></span><br>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" class="form-control" name="data[Email]"><br
+        
+        <label for="phno">PhoneNumber</label>
+        <label for="phno" style="color: red;">*</label>
+        <input type="text" id="phno" class="form-control" name="data[PhoneNumber]"><br>
+        <span id="msg1" style="color: red;"></span><br>
+
+
+        <label for="pswd">Password</label>
+        <label for="pswd" style="color: aqua;">*</label>
+        <input type="password" id="pswd" class="form-control" name="data[Password]"><br>
+        
+        <label for="confirm-pwd">ConfirmPassword</label>
+        <label for="confirm-pwd" style="color:aqua;">*</label>
+        <input type="password" id="confirm-pwd" class="form-control" name="data[ConfirmPassword]"><br>
+        <span id="msg2" style="color: crimson;"></span><br>
+
+        <input type="submit" class = "btn btn-success">&nbsp;&nbsp;
+        
+        <a href="https://docs.google.com/spreadsheets/d/12Y2ABU-hdC3LHO_8JncD0ja9nR2ATpKdqB6FrFSgt2U/edit#gid=0"><input type="button" value="clickhere"  class="btn btn-primary"></a>
+    </form>
+    <script>
+        var form= document.getElementById("sheetdb-form")
+        form.addEventListener("submit", e => {
+    // Prevent the default form submission behavior
+        e.preventDefault();
+
+        // Fetch the form action URL with a POST request
+        fetch(form.action, {
+        method: "POST",
+        body: new FormData(document.getElementById("sheetdb-form"))
+        }).then(response => response.json());
+
+        // Reset the form
+        document.getElementById("sheetdb-form").reset();
+        });
+
+    </script>
+</body>
+</html>
+
+
+<!-- 
+Standard bootstrap classes to change button colors
+
+class = "btn btn-primary"	==>blue color
+class = "btn btn-success" ==> green color
+class = "btn btn-danger" ==> red color -->
+
+<!-- echo "# form-validation" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/ManuSam23/form-validation.git
+git push -u origin main -->
